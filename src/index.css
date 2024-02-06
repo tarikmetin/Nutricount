@@ -1,0 +1,143 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, Helvetica, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; /*on horizontal*/
+  background: ffffff;
+  min-height: 50rem;
+  color: #213547;
+  background-color: black;
+}
+
+/* HEADER START */
+
+.header {
+  width: 100%;
+  background-color: bisque;
+}
+
+.header h1 {
+  font-size: 3rem;
+}
+
+/* HEADER END */
+
+/* INTERFACE CONTAINER START */
+
+.interface-container {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical */
+  align-items: center; /* Horizontal */
+  flex-grow: 1;
+  background-color: aqua;
+}
+
+/* INTERFACE CONTAINER END */
+
+/* SEARCH BAR START */
+
+.search-container {
+  width: 60%;
+  background: blue;
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 999px;
+  border: solid lightgrey;
+  min-height: 1.5rem;
+  padding: 0.8rem 2rem;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0px 0px 20px -18px;
+  font-size: 1.1rem;
+}
+
+.search-input:hover {
+  border: 2px solid lightgrey;
+  box-shadow: 0px 0px 20px -17px;
+}
+
+.search-input:active {
+  transform: scale(0.99);
+}
+
+.search-input:focus {
+  border: 2px solid grey;
+}
+
+/* SEARCH BAR END */
+
+/* SEARCH RESULTS START */
+
+.search-results-wrapper {
+  opacity: 1;
+  visibility: visible;
+  width: 60%;
+  background: red;
+  max-height: 15rem;
+  overflow-y: auto;
+  transition: 1000ms ease-out;
+}
+
+.search-results-wrapper.inactive {
+  opacity: 0;
+  display: none;
+  width: 60%;
+  background: red;
+  max-height: 15rem;
+  overflow-y: auto;
+  transition: 1000ms ease-out;
+}
+
+.search-results-wrapper .single-result {
+  width: 100%;
+  background: burlywood;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-results-wrapper .single-result .img-holder {
+  width: 50%;
+  background: burlywood;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.search-results-wrapper .single-result .img-holder img {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.search-results-wrapper .single-result .content-holder {
+  width: 50%;
+  background: burlywood;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SEARCH RESULTS END */
