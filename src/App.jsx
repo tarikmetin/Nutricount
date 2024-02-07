@@ -5,8 +5,16 @@ import SearchResults from "./components/SearchResults";
 import SelectedIngredients from "./components/SelectedIngredients";
 
 export const Context = createContext();
+export const NutritionContext = createContext();
 
 function App() {
+  const [nutritionValues, setNutritionValues] = useState({
+    fat: 0,
+    carbohydrate: 0,
+    protein: 0,
+    calories: 0,
+  });
+  const [input, setInput] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useState({});
   const [foundIngredients, setFoundIngredients] = useState([]);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -15,11 +23,11 @@ function App() {
   function handleClickCloseSearch(event) {
     if (
       event.target.className !== "search-input" &&
-      event.target.className !== "content-holder" &&
-      event.target.className !== "img-holder" &&
-      event.target.alt !== "fetchImg"
+      event.target.className !== "content-holder"
     ) {
       setSearchOpen(false);
+      setFoundIngredients([]);
+      setInput("");
     }
   }
 
@@ -34,22 +42,38 @@ function App() {
 
   return (
     <>
-      <Context.Provider value={[selectedIngredient, setSelectedIngredient]}>
-        <div className="App" onClick={(e) => handleClickCloseSearch(e)}>
-          <Header />
-          <div className="interface-container">
-            <SearchBar
-              setFoundIngredients={setFoundIngredients}
-              setSearchOpen={setSearchOpen}
-              searchState={searchOpen}
-            />
-            <SearchResults
-              ingredientList={foundIngredients}
-              searchState={searchOpen}
-            />
-            <SelectedIngredients selectedIngredient={selectedIngredient} />
+      <Context.Provider
+        value={[
+          {
+            ingSelection: [selectedIngredient, setSelectedIngredient],
+          },
+        ]}
+      >
+        <NutritionContext.Provider
+          value={[
+            {
+              nutrition: [nutritionValues, setNutritionValues],
+            },
+          ]}
+        >
+          <div className="App" onClick={(e) => handleClickCloseSearch(e)}>
+            <Header />
+            <div className="interface-container">
+              <SearchBar
+                setFoundIngredients={setFoundIngredients}
+                setSearchOpen={setSearchOpen}
+                searchState={searchOpen}
+                setInput={setInput}
+                input={input}
+              />
+              <SearchResults
+                ingredientList={foundIngredients}
+                searchState={searchOpen}
+              />
+              <SelectedIngredients selectedIngredient={selectedIngredient} />
+            </div>
           </div>
-        </div>
+        </NutritionContext.Provider>
       </Context.Provider>
     </>
   );

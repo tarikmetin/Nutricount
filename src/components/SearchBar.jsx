@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { INGREDIENTS } from "../constants/ingredientsData";
 
-export default function SearchBar({ setFoundIngredients, setSearchOpen }) {
-  const [input, setInput] = useState("");
-
+export default function SearchBar({
+  setFoundIngredients,
+  setSearchOpen,
+  setInput,
+  input,
+}) {
   //Function takes the ingredients matching with the input and put them in a new list called results
   const grabIngredient = (value) => {
     const results = INGREDIENTS.filter((ingredient) => {

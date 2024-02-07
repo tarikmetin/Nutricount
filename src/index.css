@@ -118,21 +118,6 @@ body {
   flex-direction: row;
 }
 
-.search-results-wrapper .single-result .img-holder {
-  width: 50%;
-  background: burlywood;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.search-results-wrapper .single-result .img-holder img {
-  width: 15rem;
-  height: 15rem;
-  object-fit: cover;
-  object-position: center;
-}
-
 .search-results-wrapper .single-result .content-holder {
   width: 50%;
   background: burlywood;
@@ -141,3 +126,17 @@ body {
 }
 
 /* SEARCH RESULTS END */
+
+/* SELECTED INGREDIENTS START */
+
+.selected-ingredient-content-holder {
+  display: flex;
+  gap: 3rem;
+}
+
+.ingredient-info-card {
+  min-height: 10rem;
+  background: brown;
+}
+
+/* SELECTED INGREDIENTS END */
