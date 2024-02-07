@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import SelectedIngredients from "./components/SelectedIngredients";
 
+export const Context = createContext();
+
 function App() {
+  const [selectedIngredient, setSelectedIngredient] = useState({});
   const [foundIngredients, setFoundIngredients] = useState([]);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -31,20 +34,23 @@ function App() {
 
   return (
     <>
-      <div className="App" onClick={(e) => handleClickCloseSearch(e)}>
-        <Header />
-        <div className="interface-container">
-          <SearchBar
-            setFoundIngredients={setFoundIngredients}
-            setSearchOpen={setSearchOpen}
-            searchState={searchOpen}
-          />
-          <SearchResults
-            ingredientList={foundIngredients}
-            searchState={searchOpen}
-          />
+      <Context.Provider value={[selectedIngredient, setSelectedIngredient]}>
+        <div className="App" onClick={(e) => handleClickCloseSearch(e)}>
+          <Header />
+          <div className="interface-container">
+            <SearchBar
+              setFoundIngredients={setFoundIngredients}
+              setSearchOpen={setSearchOpen}
+              searchState={searchOpen}
+            />
+            <SearchResults
+              ingredientList={foundIngredients}
+              searchState={searchOpen}
+            />
+            <SelectedIngredients selectedIngredient={selectedIngredient} />
+          </div>
         </div>
-      </div>
+      </Context.Provider>
     </>
   );
 }
