@@ -1,5 +1,13 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { NutritionContext } from "../App";
+
+//Filter function
+function filterObjects(ingredientArr) {
+  return ingredientArr.filter(
+    (ele, ind) =>
+      ind === ingredientArr.findIndex((elem) => elem.name === ele.name)
+  );
+}
 
 export default function SelectedIngredient({ ingredientInfo }) {
   const [
@@ -8,20 +16,35 @@ export default function SelectedIngredient({ ingredientInfo }) {
     },
   ] = useContext(NutritionContext);
 
-  console.log(nutritionValues);
-
-  //State value is accepted as 100 gr as default
+  //Quantity of selected ingredient is accepted as 100 gr as default
   const [quantity, setQuantity] = useState(100);
 
   //Calculation of nutrition values based on the given quantity
   const calculatedNutrition = {
-    calories: `${(ingredientInfo.calories / 100) * quantity}`,
+    name: `${ingredientInfo.name}`,
+    fat: `${(ingredientInfo.fat / 100) * quantity}`,
+    protein: `${(ingredientInfo.protein / 100) * quantity}`,
+    carbohydrates: `${(ingredientInfo.carbohydrates / 100) * quantity}`,
+    calories: `${Math.floor((ingredientInfo.calories / 100) * quantity)}`,
   };
 
-  //Every change on the input value is register the quantity
+  //Every change on the input value is register the quantity and also updates the
   function handleSetQuantity(e) {
     setQuantity(e.target.value);
+    setNutritionValues(
+      //Not to duplicate the same object over and over again...
+      filterObjects([calculatedNutrition, ...nutritionValues])
+    );
   }
+
+  //This function allows setNutritionValues to be set immediately after the component mounted.
+  useEffect(
+    () =>
+      setNutritionValues(
+        filterObjects([calculatedNutrition, ...nutritionValues])
+      ),
+    []
+  );
 
   return (
     <div className="ingredient-info-card">

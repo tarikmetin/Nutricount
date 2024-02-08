@@ -3,17 +3,13 @@ import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import SelectedIngredients from "./components/SelectedIngredients";
+import NutritionDisplay from "./components/NutritionDisplay";
 
 export const Context = createContext();
 export const NutritionContext = createContext();
 
 function App() {
-  const [nutritionValues, setNutritionValues] = useState({
-    fat: 0,
-    carbohydrate: 0,
-    protein: 0,
-    calories: 0,
-  });
+  const [nutritionValues, setNutritionValues] = useState([]);
   const [input, setInput] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useState({});
   const [foundIngredients, setFoundIngredients] = useState([]);
@@ -59,6 +55,7 @@ function App() {
           <div className="App" onClick={(e) => handleClickCloseSearch(e)}>
             <Header />
             <div className="interface-container">
+              <NutritionDisplay nutritionValues={nutritionValues} />
               <SearchBar
                 setFoundIngredients={setFoundIngredients}
                 setSearchOpen={setSearchOpen}

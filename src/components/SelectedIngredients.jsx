@@ -1,6 +1,7 @@
 import SelectedIngredient from "./SelectedIngredient";
 import { useState, useEffect } from "react";
 
+//Function filters out the duplicate objects
 function filterObjects(ingredientArr) {
   return ingredientArr
     .filter(
@@ -15,8 +16,10 @@ export default function SelectedIngredients({ selectedIngredient }) {
 
   // const imgUrl = response[0]?.urls.thumb;
 
+  //The list of picked ingredients from the searchbar
   const [selectedIngredientList, setSelectedIngredientList] = useState([]);
 
+  //This function adds the ingredient into the list everytime there is a change in the selected ingredient
   useEffect(() => {
     const filteredIngredientList = filterObjects([
       ...selectedIngredientList,
