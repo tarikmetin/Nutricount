@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <div className="header">
-      <h1>RECIPE MAKER</h1>
+      <h1>Meal Calorie Calculator</h1>
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default function SelectedIngredient({ ingredientInfo }) {
     calories: `${Math.floor((ingredientInfo.calories / 100) * quantity)}`,
   };
 
-  //Every change on the input value is register the quantity and also updates the
+  //Every change on the input value is register the quantity and also updates the nutrition list
   function handleSetQuantity(e) {
     setQuantity(e.target.value);
     setNutritionValues(
@@ -37,13 +37,13 @@ export default function SelectedIngredient({ ingredientInfo }) {
     );
   }
 
-  //This function allows setNutritionValues to be set immediately after the component mounted.
+  //This function allows setNutritionValues to be set immediately after the component mounted and whenever quantity state is changed.This is really important because NutritionDisplay component uses nutritionValues state and it gotta be synched with the calculatedNutrition object which is used to be displayed nutrition of individual ingredients
   useEffect(
     () =>
       setNutritionValues(
         filterObjects([calculatedNutrition, ...nutritionValues])
       ),
-    []
+    [quantity]
   );
 
   return (
