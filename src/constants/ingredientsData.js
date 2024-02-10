@@ -20,4 +20,11 @@ export const INGREDIENTS = [
     protein: 24,
     calories: 291,
   },
+  {
+    name: "Wheat Flour",
+    fat: 1,
+    carbohydrate: 76,
+    protein: 10,
+    calories: 364,
+  },
 ];

@@ -1,5 +1,6 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { NutritionContext } from "../App";
+import fetchImg from "../hooks/fetchImg";
 
 //Filter function
 function filterObjects(ingredientArr) {
@@ -22,14 +23,19 @@ export default function SelectedIngredient({ ingredientInfo }) {
   //Calculation of nutrition values based on the given quantity
   const calculatedNutrition = {
     name: `${ingredientInfo.name}`,
-    fat: `${(ingredientInfo.fat / 100) * quantity}`,
-    protein: `${(ingredientInfo.protein / 100) * quantity}`,
-    carbohydrates: `${(ingredientInfo.carbohydrates / 100) * quantity}`,
+    fat: `${Math.floor((ingredientInfo.fat / 100) * quantity)}`,
+    protein: `${Math.floor((ingredientInfo.protein / 100) * quantity)}`,
+    carbohydrate: `${Math.floor(
+      (ingredientInfo.carbohydrate / 100) * quantity
+    )}`,
     calories: `${Math.floor((ingredientInfo.calories / 100) * quantity)}`,
   };
 
   //Every change on the input value is register the quantity and also updates the nutrition list
   function handleSetQuantity(e) {
+    if (e.target.value.length > 5) {
+      return;
+    }
     setQuantity(e.target.value);
     setNutritionValues(
       //Not to duplicate the same object over and over again...
@@ -38,24 +44,43 @@ export default function SelectedIngredient({ ingredientInfo }) {
   }
 
   //This function allows setNutritionValues to be set immediately after the component mounted and whenever quantity state is changed.This is really important because NutritionDisplay component uses nutritionValues state and it gotta be synched with the calculatedNutrition object which is used to be displayed nutrition of individual ingredients
-  useEffect(
-    () =>
-      setNutritionValues(
-        filterObjects([calculatedNutrition, ...nutritionValues])
-      ),
-    [quantity]
-  );
+  useEffect(() => {
+    setNutritionValues(
+      filterObjects([calculatedNutrition, ...nutritionValues])
+    );
+  }, [quantity]);
+
+  //This fetch the image of the ingredient and creates a imgUrl variable
+  const { response, fetchData } = fetchImg(ingredientInfo.name);
+  const imgUrl = response[0]?.urls.small;
 
   return (
     <div className="ingredient-info-card">
-      <form action=""></form>
-      <h1>{ingredientInfo.name}</h1>
-      <input
-        type="number"
-        defaultValue={quantity}
-        onChange={(e) => handleSetQuantity(e)}
-      />
-      <h1>{calculatedNutrition.calories}</h1>
+      <div
+        className="card-text"
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundImage: `url(${imgUrl})`,
+        }}
+      >
+        <h1>{ingredientInfo.name}</h1>
+
+        <div className="nutrition-info">
+          <p>Protein: {calculatedNutrition.protein} gr</p>
+          <p>Carbohydrate: {calculatedNutrition.carbohydrate} gr</p>
+          <p>Fat: {calculatedNutrition.fat} gr</p>
+          <p>Calories :{calculatedNutrition.calories}</p>
+        </div>
+
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => handleSetQuantity(e)}
+        />
+      </div>
     </div>
   );
 }

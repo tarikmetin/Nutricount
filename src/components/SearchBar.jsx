@@ -6,6 +6,7 @@ export default function SearchBar({
   setSearchOpen,
   setInput,
   input,
+  setDarkScreen,
 }) {
   //Function takes the ingredients matching with the input and put them in a new list called results
   const grabIngredient = (value) => {
@@ -30,6 +31,7 @@ export default function SearchBar({
   //Search results can be dismissed by clicking on the app while searchbar still having a text. This functions below ensures that search bar can be opened again when you click on the search bar (assuming search bar still have text in it)
   function handleClickOpenSearch() {
     setSearchOpen(true);
+    setDarkScreen(true);
   }
 
   return (

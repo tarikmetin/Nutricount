@@ -19,21 +19,33 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center; /*on horizontal*/
+  gap: 0.75rem;
   background: ffffff;
   min-height: 50rem;
+  padding: 1rem 2rem;
   color: var(--text-color-main);
-  background-color: black;
+  background-color: #000;
 }
 
 /* HEADER START */
 
 .header {
   width: 100%;
-  background-color: bisque;
+  border-radius: 14px;
+  padding: 0.5em 0.75em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f4f4;
+  color: #000;
+}
+
+.header img {
+  width: 13rem;
 }
 
 .header h1 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 /* HEADER END */
@@ -47,7 +59,8 @@ body {
   justify-content: center; /* Vertical */
   align-items: center; /* Horizontal */
   flex-grow: 1;
-  background-color: aqua;
+  background-color: #f4f4f4;
+  border-radius: 14px;
 }
 
 /* INTERFACE CONTAINER END */
@@ -56,23 +69,23 @@ body {
 
 .search-container {
   width: 60%;
-  background: blue;
 }
 
 .search-input {
   width: 100%;
   border-radius: 999px;
-  border: solid lightgrey;
+  border: solid lightgray;
   min-height: 1.5rem;
   padding: 0.8rem 2rem;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0px 0px 20px -18px;
   font-size: 1.1rem;
+  margin-bottom: 0.5em;
 }
 
 .search-input:hover {
-  border: 2px solid lightgrey;
+  border: solid gray;
   box-shadow: 0px 0px 20px -17px;
 }
 
@@ -81,7 +94,7 @@ body {
 }
 
 .search-input:focus {
-  border: 2px solid grey;
+  border: solid #000;
 }
 
 /* SEARCH BAR END */
@@ -92,17 +105,17 @@ body {
   opacity: 1;
   visibility: visible;
   width: 60%;
-  background: red;
   max-height: 15rem;
   overflow-y: auto;
   transition: 1000ms ease-out;
+  box-shadow: 2px 2px 8px;
+  border-radius: 7px;
 }
 
 .search-results-wrapper.inactive {
   opacity: 0;
   display: none;
   width: 60%;
-  background: red;
   max-height: 15rem;
   overflow-y: auto;
   transition: 1000ms ease-out;
@@ -110,16 +123,15 @@ body {
 
 .search-results-wrapper .single-result {
   width: 100%;
-  background: burlywood;
-  display: flex;
+  background: #f4f4f4;
   flex-direction: row;
+  padding: 1em;
 }
+.search-results-wrapper .single-result:hover {
+  width: 100%;
+  background: #dbdbdb;
 
-.search-results-wrapper .single-result .content-holder {
-  width: 50%;
-  background: burlywood;
-  display: flex;
-  flex-direction: column;
+  padding: 1em;
 }
 
 /* SEARCH RESULTS END */
@@ -127,13 +139,74 @@ body {
 /* SELECTED INGREDIENTS START */
 
 .selected-ingredient-content-holder {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 2em;
   gap: 3rem;
 }
 
 .ingredient-info-card {
-  min-height: 10rem;
-  background: brown;
+  aspect-ratio: 3/4;
+  border: solid lightgray;
+  box-shadow: 1px 1px 4px;
+}
+
+.ingredient-info-card .card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #f4f4f4;
+  padding: 2em;
+}
+
+.ingredient-info-card .card-text h1 {
+  text-shadow: 1px 1px 2px black;
+}
+
+/* Color filter on top of the images */
+.ingredient-info-card .card-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(0deg, rgb(0 0 0 / 0.9), rgb(0 0 0 / 0));
+}
+
+/* Input value */
+.ingredient-info-card .card-text input {
+  width: 70%;
+  border-radius: 999px;
+  border: solid lightgray;
+  min-height: 1.5rem;
+  padding: 0.8rem 1rem;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.ingredient-info-card .card-text input:hover {
+  border: solid gray;
+}
+
+.ingredient-info-card .card-text input:active {
+  transform: scale(0.99);
+}
+
+.ingredient-info-card .card-text input:focus {
+  border: solid #000;
+}
+
+.ingredient-info-card .card-text .nutrition-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
 }
 
 /* SELECTED INGREDIENTS END */

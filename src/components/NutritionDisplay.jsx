@@ -12,7 +12,7 @@ export default function NutritionDisplay({ nutritionValues }) {
   }, [nutritionValues]);
 
   return (
-    <div>
+    <div className="display-area">
       <h1>{totalCal}</h1>
     </div>
   );

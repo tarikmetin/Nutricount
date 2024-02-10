@@ -8,19 +8,13 @@ export default function SearchResult({ ingredient }) {
     },
   ] = useContext(Context);
 
-  // const { response, fetchData } = fetchImg(ingredient.name);
-
-  // const imgUrl = response[0]?.urls.thumb;
-
   function handleSelectIngredient() {
     setSelectedIngredient(ingredient);
   }
 
   return (
     <div className="single-result" onClick={handleSelectIngredient}>
-      <div className="content-holder">
-        <h2>{ingredient.name}</h2>
-      </div>
+      <h2>{ingredient.name}</h2>
     </div>
   );
 }
