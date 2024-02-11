@@ -74,12 +74,14 @@ export default function SelectedIngredient({ ingredientInfo }) {
           <p>Fat: {calculatedNutrition.fat} gr</p>
           <p>Calories :{calculatedNutrition.calories}</p>
         </div>
-
-        <input
-          type="number"
-          value={quantity}
-          onChange={(e) => handleSetQuantity(e)}
-        />
+        <div className="input-area">
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => handleSetQuantity(e)}
+          />
+          <span>gr</span>
+        </div>
       </div>
     </div>
   );

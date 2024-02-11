@@ -162,10 +162,9 @@ body {
   isolation: isolate;
   overflow: hidden;
   color: #f4f4f4;
-  padding: 2em;
-}
+  padding: 2em 1em;
 
-.ingredient-info-card .card-text h1 {
+  line-height: 1.4;
   text-shadow: 1px 1px 2px black;
 }
 
@@ -179,28 +178,44 @@ body {
 }
 
 /* Input value */
-.ingredient-info-card .card-text input {
-  width: 70%;
+.ingredient-info-card .card-text .input-area input {
+  width: 60%;
   border-radius: 999px;
   border: solid lightgray;
   min-height: 1.5rem;
   padding: 0.8rem 1rem;
   outline: none;
   transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   text-align: center;
 }
 
-.ingredient-info-card .card-text input:hover {
+.ingredient-info-card .card-text .input-area input:hover {
   border: solid gray;
 }
 
-.ingredient-info-card .card-text input:active {
+.ingredient-info-card .card-text .input-area input:active {
   transform: scale(0.99);
 }
 
-.ingredient-info-card .card-text input:focus {
+.ingredient-info-card .card-text .input-area input:focus {
   border: solid #000;
+}
+
+.ingredient-info-card .card-text .input-area span {
+  offset: 3em;
+  font-size: 1.4rem;
+  margin-left: 0.25em;
+}
+
+/* SELECTED INGREDIENTS END */
+
+/* TOTAL CONSUMED INFO START */
+
+.display-area {
+  width: 90%;
+  margin: 5em 0;
+  padding: 2em;
 }
 
 .ingredient-info-card .card-text .nutrition-info {

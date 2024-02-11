@@ -12,10 +12,6 @@ function filterObjects(ingredientArr) {
 }
 
 export default function SelectedIngredients({ selectedIngredient }) {
-  // const { response, fetchData } = fetchImg(selectedIngredient.name);
-
-  // const imgUrl = response[0]?.urls.thumb;
-
   //The list of picked ingredients from the searchbar
   const [selectedIngredientList, setSelectedIngredientList] = useState([]);
 
