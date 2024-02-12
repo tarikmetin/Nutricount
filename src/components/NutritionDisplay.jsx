@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PieChart from "./charts/PieChart";
 
 export default function NutritionDisplay({ nutritionValues }) {
   const [totalVal, setTotalVal] = useState({
@@ -6,6 +7,11 @@ export default function NutritionDisplay({ nutritionValues }) {
     totalCarbohydrate: 0,
     totalFat: 0,
     totalCal: 0,
+  });
+
+  const [displayData, setDisplayData] = useState({
+    labels: ["Proteins", "Carbs", "Fats"],
+    datasets: [],
   });
 
   useEffect(() => {
@@ -25,6 +31,23 @@ export default function NutritionDisplay({ nutritionValues }) {
     });
   }, [nutritionValues]);
 
+  useEffect(() => {
+    setDisplayData({
+      ...displayData,
+      datasets: [
+        {
+          label: "Weight in grams",
+          data: [
+            totalVal.totalProtein,
+            totalVal.totalCarbohydrate,
+            totalVal.totalFat,
+          ],
+          backgroundColor: ["#F29544", "#2A2640", "#A64E46"],
+        },
+      ],
+    });
+  }, [totalVal]);
+
   return (
     <div className="display-area">
       <div className="text-info">
@@ -32,6 +55,9 @@ export default function NutritionDisplay({ nutritionValues }) {
         <h1>Total Carbohydrates: {totalVal.totalCarbohydrate} gr</h1>
         <h1>Total Fat: {totalVal.totalFat} gr</h1>
         <h1>Total Calories: {totalVal.totalCal} cal</h1>
+      </div>
+      <div className="chart-info">
+        <PieChart chartData={displayData} />
       </div>
     </div>
   );

@@ -168,6 +168,10 @@ body {
   text-shadow: 1px 1px 2px black;
 }
 
+.ingredient-info-card .nutrition-info {
+  justify-content: center;
+}
+
 /* Color filter on top of the images */
 .ingredient-info-card .card-text::before {
   content: "";
@@ -216,12 +220,19 @@ body {
   width: 90%;
   margin: 5em 0;
   padding: 2em;
+  display: flex;
+  justify-content: space-between;
 }
 
 .ingredient-info-card .card-text .nutrition-info {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
+  flex-grow: 1;
+}
+
+.chart-info {
+  flex-shrink: 1;
 }
 
 /* SELECTED INGREDIENTS END */
