@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PieChart from "./charts/PieChart";
+import PieChart from "./charts/DoughnutChart";
 import BarChart from "./charts/BarChart";
 
 export default function NutritionDisplay({ nutritionValues }) {
@@ -29,16 +29,10 @@ export default function NutritionDisplay({ nutritionValues }) {
 
   return (
     <div className="display-area">
-      {/* <div className="text-info">
-        <h1>Total Protein: {totalVal.totalProtein} gr</h1>
-        <h1>Total Carbohydrates: {totalVal.totalCarbohydrate} gr</h1>
-        <h1>Total Fat: {totalVal.totalFat} gr</h1>
-        <h1>Total Calories: {totalVal.totalCal} cal</h1>
-      </div> */}
-      <div className="chart-info bar">
+      <div className="chart-info">
         <BarChart totalVal={totalVal} />
       </div>
-      <div className="chart-info pie">
+      <div className="chart-info">
         <PieChart totalVal={totalVal} />
       </div>
     </div>

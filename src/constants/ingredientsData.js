@@ -27,4 +27,11 @@ export const INGREDIENTS = [
     protein: 10,
     calories: 364,
   },
+  {
+    name: "Potato",
+    fat: 0.1,
+    carbohydrate: 21,
+    protein: 2.5,
+    calories: 93,
+  },
 ];

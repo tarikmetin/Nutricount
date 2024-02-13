@@ -1,25 +1,11 @@
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import { Chart } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
 const options = {
+  layout: {
+    padding: 0,
+  },
   plugins: {
     legend: false,
   },
@@ -40,7 +26,7 @@ const options = {
 
 export default function BarChart({ totalVal }) {
   const [displayData, setDisplayData] = useState({
-    labels: ["Proteins", "Carbs", "Fats", "Calories"],
+    labels: ["Calories"],
     datasets: [],
   });
 
@@ -49,14 +35,10 @@ export default function BarChart({ totalVal }) {
       ...displayData,
       datasets: [
         {
+          barThickness: 20,
           label: "Nutrition Values",
-          data: [
-            totalVal.totalProtein,
-            totalVal.totalCarbohydrate,
-            totalVal.totalFat,
-            totalVal.totalCal,
-          ],
-          backgroundColor: ["#F29544", "#2A2640", "#A64E46", "#F7DC6F"],
+          data: [totalVal.totalCal],
+          backgroundColor: ["#F7DC6F"],
         },
       ],
     });

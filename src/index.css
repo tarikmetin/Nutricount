@@ -15,6 +15,7 @@ body {
 }
 
 .App {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -80,7 +81,7 @@ body {
   transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0px 0px 20px -18px;
   font-size: 1.1rem;
-  margin-bottom: 2em;
+  margin-bottom: 0.25em;
 }
 
 .search-input:hover {
@@ -138,6 +139,7 @@ body {
 /* SELECTED INGREDIENTS START */
 
 .selected-ingredient-content-holder {
+  min-height: 30rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 2em;
@@ -148,6 +150,10 @@ body {
   aspect-ratio: 3/4;
   border: solid lightgray;
   box-shadow: 1px 1px 4px;
+}
+
+.ingredient-info-card p {
+  font-size: 1.3rem;
 }
 
 .ingredient-info-card .card-text {
@@ -165,10 +171,6 @@ body {
 
   line-height: 1.4;
   text-shadow: 1px 1px 2px black;
-}
-
-.ingredient-info-card .nutrition-info {
-  justify-content: center;
 }
 
 /* Color filter on top of the images */
@@ -211,16 +213,48 @@ body {
   margin-left: 0.25em;
 }
 
+@media (max-width: 1250px) {
+  .selected-ingredient-content-holder {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 /* SELECTED INGREDIENTS END */
 
 /* TOTAL CONSUMED INFO START */
 
 .display-area {
-  width: 75%;
+  min-width: 250px;
+  min-height: 250px;
   margin: 3em 0;
   display: grid;
   gap: 2rem;
   grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.chart-info {
+  width: clamp(325px, 750px, 840px);
+  min-height: 350px;
+  padding: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 28px;
+  background-color: #213547;
+}
+
+@media (max-width: 1250px) {
+  .display-area {
+    max-width: 375px;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .chart-info {
+    max-width: 300px;
+  }
 }
 
 /* .ingredient-info-card .card-text .nutrition-info {
@@ -229,13 +263,5 @@ body {
   font-size: 1.25rem;
   flex-grow: 1;
 } */
-
-.chart-info {
-  padding: 2em;
-  display: flex;
-  justify-content: center;
-  border-radius: 28px;
-  background-color: #213547;
-}
 
 /* SELECTED INGREDIENTS END */
