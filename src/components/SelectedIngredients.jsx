@@ -11,23 +11,31 @@ function filterObjects(ingredientArr) {
     .filter((value) => Object.keys(value).length !== 0);
 }
 
+//The list of picked ingredients from the searchbar
 export default function SelectedIngredients({ selectedIngredient }) {
-  //The list of picked ingredients from the searchbar
   const [selectedIngredientList, setSelectedIngredientList] = useState([]);
 
+  //List filtered out from initial state object and duplicates
+  const filteredIngredientList = filterObjects([
+    ...selectedIngredientList,
+    selectedIngredient,
+  ]);
   //This function adds the ingredient into the list everytime there is a change in the selected ingredient
   useEffect(() => {
-    const filteredIngredientList = filterObjects([
-      ...selectedIngredientList,
-      selectedIngredient,
-    ]);
     setSelectedIngredientList(filteredIngredientList);
   }, [selectedIngredient]);
 
   return (
     <div className="selected-ingredient-content-holder">
       {selectedIngredientList.map((ingredient, id) => {
-        return <SelectedIngredient key={id} ingredientInfo={ingredient} />;
+        return (
+          <SelectedIngredient
+            key={id}
+            ingredientInfo={ingredient}
+            setSelectedIngredientList={setSelectedIngredientList}
+            selectedIngredientList={selectedIngredientList}
+          />
+        );
       })}
     </div>
   );

@@ -15,10 +15,20 @@ const options = {
       grid: {
         display: false,
       },
+      ticks: {
+        font: {
+          size: 24,
+        },
+      },
     },
     y: {
       grid: {
-        display: false,
+        display: true,
+      },
+      ticks: {
+        font: {
+          size: 24,
+        },
       },
     },
   },
@@ -35,7 +45,7 @@ export default function BarChart({ totalVal }) {
       ...displayData,
       datasets: [
         {
-          barThickness: 20,
+          barThickness: 28,
           label: "Nutrition Values",
           data: [totalVal.totalCal],
           backgroundColor: ["#F7DC6F"],

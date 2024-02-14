@@ -213,6 +213,12 @@ body {
   margin-left: 0.25em;
 }
 
+.delete-button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
 @media (max-width: 1250px) {
   .selected-ingredient-content-holder {
     grid-template-columns: 1fr 1fr;

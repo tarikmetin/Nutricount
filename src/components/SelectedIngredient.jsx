@@ -10,7 +10,11 @@ function filterObjects(ingredientArr) {
   );
 }
 
-export default function SelectedIngredient({ ingredientInfo }) {
+export default function SelectedIngredient({
+  ingredientInfo,
+  setSelectedIngredientList,
+  selectedIngredientList,
+}) {
   const [
     {
       nutrition: [nutritionValues, setNutritionValues],
