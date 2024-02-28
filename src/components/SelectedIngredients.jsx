@@ -12,7 +12,11 @@ function filterObjects(ingredientArr) {
 }
 
 //The list of picked ingredients from the searchbar
-export default function SelectedIngredients({ selectedIngredient }) {
+export default function SelectedIngredients({
+  selectedIngredient,
+  setNutritionValues,
+  setSelectedIngredient,
+}) {
   const [selectedIngredientList, setSelectedIngredientList] = useState([]);
 
   //List filtered out from initial state object and duplicates
@@ -25,18 +29,28 @@ export default function SelectedIngredients({ selectedIngredient }) {
     setSelectedIngredientList(filteredIngredientList);
   }, [selectedIngredient]);
 
+  function handleNewList() {
+    setSelectedIngredientList([]);
+    setNutritionValues([]);
+    setSelectedIngredient({});
+  }
+
   return (
     <div className="selected-ingredient-content-holder">
-      {selectedIngredientList.map((ingredient, id) => {
+      {selectedIngredientList.map((ingredient) => {
         return (
           <SelectedIngredient
-            key={id}
+            key={ingredient.name}
             ingredientInfo={ingredient}
             setSelectedIngredientList={setSelectedIngredientList}
             selectedIngredientList={selectedIngredientList}
+            setSelectedIngredient={setSelectedIngredient}
           />
         );
       })}
+      <span className="delete-button" onClick={() => handleNewList()}>
+        New List
+      </span>
     </div>
   );
 }

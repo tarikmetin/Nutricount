@@ -7,9 +7,10 @@ let doughnutLabelsLine = labelsLine();
 
 const options = {
   layout: {
-    padding: 20,
+    padding: 75,
   },
-  maintainAspectRatio: false,
+  // maintainAspectRatio: false,
+  aspectRatio: 1.3,
   plugins: {
     legend: false,
   },

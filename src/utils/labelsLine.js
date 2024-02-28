@@ -18,9 +18,9 @@ export default function labelsLine() {
           const halfHeight = height / 2;
           const textWidth = ctx.measureText(chart.data.labels[index]).width;
 
-          const xLine = x >= halfWidth ? x + 45 : x - 45;
-          const yLine = y >= halfHeight ? y + 45 : y - 45;
-          const extraXLine = x >= halfWidth ? 40 : -40;
+          const xLine = x >= halfWidth ? x + 60 : x - 60;
+          const yLine = y >= halfHeight ? y + 60 : y - 60;
+          const extraXLine = x >= halfWidth ? 60 : -60;
           const textGap = x >= halfWidth ? 5 : -5;
           const textAlignment = x >= halfWidth ? "left" : "right";
           const outOfDiv = y >= 230 ? -50 : 0;

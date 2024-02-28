@@ -9,7 +9,6 @@ export const Context = createContext();
 export const NutritionContext = createContext();
 
 function App() {
-  const [darkScreen, setDarkScreen] = useState(false);
   const [nutritionValues, setNutritionValues] = useState([]);
   const [input, setInput] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useState({});
@@ -25,7 +24,6 @@ function App() {
       setSearchOpen(false);
       setFoundIngredients([]);
       setInput("");
-      setDarkScreen(false);
     }
   }
 
@@ -59,7 +57,6 @@ function App() {
             <div className="interface-container">
               <NutritionDisplay nutritionValues={nutritionValues} />
               <SearchBar
-                setDarkScreen={setDarkScreen}
                 setFoundIngredients={setFoundIngredients}
                 setSearchOpen={setSearchOpen}
                 searchState={searchOpen}
@@ -70,7 +67,11 @@ function App() {
                 ingredientList={foundIngredients}
                 searchState={searchOpen}
               />
-              <SelectedIngredients selectedIngredient={selectedIngredient} />
+              <SelectedIngredients
+                selectedIngredient={selectedIngredient}
+                setNutritionValues={setNutritionValues}
+                setSelectedIngredient={setSelectedIngredient}
+              />
             </div>
           </div>
         </NutritionContext.Provider>

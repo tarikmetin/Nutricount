@@ -4,16 +4,21 @@ import fetchImg from "../hooks/fetchImg";
 
 //Filter function
 function filterObjects(ingredientArr) {
-  return ingredientArr.filter(
-    (ele, ind) =>
-      ind === ingredientArr.findIndex((elem) => elem.name === ele.name)
-  );
+  return ingredientArr.filter((ele, ind) => {
+    return (
+      ind ===
+      ingredientArr.findIndex((elem) => {
+        return elem.name === ele.name;
+      })
+    );
+  });
 }
 
 export default function SelectedIngredient({
   ingredientInfo,
   setSelectedIngredientList,
   selectedIngredientList,
+  setSelectedIngredient,
 }) {
   const [
     {
@@ -58,6 +63,27 @@ export default function SelectedIngredient({
   const { response, fetchData } = fetchImg(ingredientInfo.name);
   const imgUrl = response[0]?.urls.small;
 
+  function handleCloseIngredient(selectedIngredient) {
+    const nutritionIndexNumber = nutritionValues.findIndex(
+      (ing) => ing.name === selectedIngredient.name
+    );
+    const renderIndexNumber = selectedIngredientList.findIndex(
+      (ing) => ing.name === selectedIngredient.name
+    );
+
+    setNutritionValues((prevState) => {
+      prevState.splice(nutritionIndexNumber, 1);
+      return [...prevState];
+    });
+
+    setSelectedIngredientList((prevState) => {
+      prevState.splice(renderIndexNumber, 1);
+      return [...prevState];
+    });
+
+    setSelectedIngredient({});
+  }
+
   return (
     <div className="ingredient-info-card">
       <div
@@ -83,8 +109,15 @@ export default function SelectedIngredient({
             type="number"
             value={quantity}
             onChange={(e) => handleSetQuantity(e)}
+            onWheel={(e) => e.target.blur()}
           />
           <span>gr</span>
+          <span
+            className="close-ingredient"
+            onClick={() => handleCloseIngredient(ingredientInfo)}
+          >
+            X
+          </span>
         </div>
       </div>
     </div>

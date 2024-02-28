@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 
 const options = {
   layout: {
-    padding: 0,
+    padding: 75,
   },
+  aspectRatio: 1.3,
   plugins: {
     legend: false,
   },
