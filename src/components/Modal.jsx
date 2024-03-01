@@ -1,3 +1,8 @@
+import search from "../imgs/search.jpg";
+import adjust from "../imgs/adjust.jpg";
+import examine from "../imgs/examine.jpg";
+import remove from "../imgs/remove.jpg";
+
 export default function Modal({ setModalState }) {
   return (
     <div className="modal">
@@ -20,7 +25,7 @@ export default function Modal({ setModalState }) {
           bar as shown below.
         </p>
         <div className="img-container">
-          <img src="/src/imgs/search.jpg" alt="" />
+          <img src={search} alt="" />
         </div>
         <p>
           After clicking an ingredient in the search bar, it will appear as a
@@ -29,7 +34,7 @@ export default function Modal({ setModalState }) {
           changes as quantity of the ingredient changes.
         </p>
         <div className="img-container">
-          <img src="/src/imgs/adjust.jpg" alt="" />
+          <img src={adjust} alt="" />
         </div>
         <p>
           To see total macronutrition composition and calories from all the
@@ -38,7 +43,7 @@ export default function Modal({ setModalState }) {
           also changes as you modify the quantity of the ingredients.
         </p>
         <div className="img-container">
-          <img src="/src/imgs/examine.jpg" alt="" />
+          <img src={examine} alt="" />
         </div>
         <p>
           You can remove the ingredients either by clicking on "X" icon on top
@@ -46,7 +51,7 @@ export default function Modal({ setModalState }) {
           The charts are going to be updated accordingly.
         </p>
         <div className="img-container">
-          <img src="/src/imgs/remove.jpg" alt="" />
+          <img src={remove} alt="" />
         </div>
         <p>
           You may not find every food ingredient you are searching for in this
