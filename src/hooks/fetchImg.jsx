@@ -6,7 +6,9 @@ export default function fetchImg(name) {
   const fetchData = async () => {
     try {
       const res = await fetch(
-        `https://api.unsplash.com/search/photos?page=1&query=${name}&client_id=pYiViWy_o1uuMNBV--AEm7erCh7pAjLcj4lI-l0cYE4`
+        `https://api.unsplash.com/search/photos?page=1&query=${name}&client_id=${
+          import.meta.env.VITE_UNSPLASH_API_KEY
+        }`
       );
       const data = await res.json();
       setResponse(data.results);

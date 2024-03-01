@@ -5,12 +5,14 @@ import { useState, useEffect } from "react";
 
 let doughnutLabelsLine = labelsLine();
 
+const width = window.innerWidth < 600;
+
 const options = {
   layout: {
-    padding: 75,
+    padding: width ? 50 : 75,
   },
   // maintainAspectRatio: false,
-  aspectRatio: 1.3,
+  aspectRatio: width ? 0.85 : 1.3,
   plugins: {
     legend: false,
   },

@@ -4,6 +4,8 @@ import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import SelectedIngredients from "./components/SelectedIngredients";
 import NutritionDisplay from "./components/NutritionDisplay";
+import Footer from "./components/Footer";
+import Modal from "./components/Modal";
 
 export const Context = createContext();
 export const NutritionContext = createContext();
@@ -14,6 +16,7 @@ function App() {
   const [selectedIngredient, setSelectedIngredient] = useState({});
   const [foundIngredients, setFoundIngredients] = useState([]);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [modalState, setModalState] = useState(false);
 
   //This dismisses the search results without needing to delete the text in the search bar by clicking anywhere in the app except the search bar.
   function handleClickCloseSearch(event) {
@@ -53,7 +56,8 @@ function App() {
           ]}
         >
           <div className="App" onClick={(e) => handleClickCloseSearch(e)}>
-            <Header />
+            <Header setModalState={setModalState} modalState={modalState} />
+
             <div className="interface-container">
               <NutritionDisplay nutritionValues={nutritionValues} />
               <SearchBar
@@ -73,6 +77,8 @@ function App() {
                 setSelectedIngredient={setSelectedIngredient}
               />
             </div>
+            {modalState ? <Modal setModalState={setModalState} /> : ""}
+            <Footer />
           </div>
         </NutritionContext.Provider>
       </Context.Provider>

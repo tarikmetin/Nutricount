@@ -2,11 +2,13 @@ import { Chart } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 
+const width = window.innerWidth < 600;
+
 const options = {
   layout: {
-    padding: 75,
+    padding: width ? 50 : 75,
   },
-  aspectRatio: 1.3,
+  aspectRatio: width ? 0.85 : 1.3,
   plugins: {
     legend: false,
   },

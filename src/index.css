@@ -26,6 +26,12 @@ body {
   color: var(--text-color-main);
 }
 
+@media (max-width: 1250px) {
+  .App {
+    padding: 0;
+  }
+}
+
 /* HEADER START */
 
 .header {
@@ -40,14 +46,86 @@ body {
 }
 
 .header img {
+  padding: 1rem;
   width: 13rem;
 }
 
-.header h1 {
-  font-size: 2rem;
+/* HEADER END */
+
+/* MODAL */
+
+.header > div {
+  padding: 2rem;
+  font-size: 1.3rem;
 }
 
-/* HEADER END */
+.info-modal-button {
+  text-decoration: none;
+  color: #213547;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+  position: absolute;
+  transform: translate(35%, 5%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 1150px;
+  max-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  overflow-y: scroll;
+  z-index: 2;
+}
+
+.img-container > img {
+  width: 1000px;
+}
+
+.modal-content {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+@media (max-width: 1250px) {
+  .modal-content {
+    margin: 1rem;
+    transform: translate(0, 0);
+    max-width: 90vw;
+    max-height: 95vh;
+    padding: 0.5rem;
+  }
+
+  .modal-content .img-container {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .img-container > img {
+    width: 320px;
+  }
+}
 
 /* INTERFACE CONTAINER START */
 
@@ -218,11 +296,12 @@ body {
   position: absolute;
   top: 2px;
   right: 2px;
+  cursor: pointer;
 }
 
 @media (max-width: 1250px) {
   .selected-ingredient-content-holder {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -230,6 +309,7 @@ body {
   position: absolute;
   top: 2px;
   right: 2px;
+  cursor: pointer;
 }
 
 /* SELECTED INGREDIENTS END */
@@ -247,7 +327,7 @@ body {
 }
 
 .chart-info {
-  width: 600px;
+  width: calc(100vw / 3);
   min-height: 350px;
   aspect-ratio: 1.3;
   display: flex;
@@ -263,6 +343,24 @@ body {
     gap: 2rem;
     grid-template-columns: 1fr;
   }
+
+  .chart-info {
+    width: calc(80vw);
+  }
 }
 
 /* SELECTED INGREDIENTS END */
+
+/* FOOTER */
+
+footer {
+  min-width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical */
+  align-items: center; /* Horizontal */
+  flex-grow: 1;
+  background-color: #f4f4f4;
+  border-radius: 14px;
+}
