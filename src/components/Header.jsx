@@ -1,7 +1,6 @@
 import nutriCount from "../imgs/nutriCount.svg";
 
 export default function Header({ setModalState, modalState }) {
-  console.log(modalState);
   return (
     <div className="header">
       <img src={nutriCount} alt="NutriCount Logo" />
