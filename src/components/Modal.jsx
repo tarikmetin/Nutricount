@@ -9,9 +9,9 @@ export default function Modal({ setModalState }) {
       <div className="overlay" onClick={() => setModalState(false)}></div>
       <div className="modal-content">
         <p>
-          Hello, I was always in search for simple calorie calculator that has
-          fast and simple gui. Since I couldn't find one online that suits my
-          preference, I built this for myself.
+          I was always in search for simple calorie calculator that has fast and
+          simple gui. Since I couldn't find one online that suits my preference,
+          I built one for myself.
         </p>
         <p>
           This tool is built for you to understand how many calories you are
@@ -57,14 +57,10 @@ export default function Modal({ setModalState }) {
           You may not find every food ingredient you are searching for in this
           app. After all this is a simple application which is created to
           showcase my skillset in frontend web development. But still you can go
-          to the <a href="">github page</a> and find the source code there. You
-          can simply add new ingredients to the ingredientsData.js file and you
-          are ready to go.
-        </p>
-        <p>
-          If you want to modify the application for your own needs you can find
-          the code in my <a href="">github page</a>. You are free to use the
-          code for your own needs, but do not share it as it is your own.
+          to the{" "}
+          <a href="https://github.com/tarikmetin/Nutricount">github page</a> and
+          find the source code there. You can simply add new ingredients to the
+          ingredientsData.js file and you are ready to go.
         </p>
       </div>
     </div>
